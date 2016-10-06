@@ -8,6 +8,7 @@
 	    <thead>
 	      <tr>
 	        <th>User ID</th>
+	        <th>Photo</th>
 	        <th>Name</th>
 	        <th>Email</th>
 	        <th>Ronel</th>
@@ -24,7 +25,8 @@
 
 		      	<tr>
 		      		<td>{{ $user->id }}</td>
-		      		<td>{{ $user->name }}</td>
+		      		<th><img height="50" src="{{ $user->photo ? $user->photo['file'] : 'http://placehold.it/100x100' }}"></th>
+		      		<td><a href="{{ route('users.edit', $user->id)}}">{{ $user->name }}</a></td>
 		      		<td>{{ $user->email }}</td>
 		      		<td>{{ $user->role['name'] }}</td>
 		      		<td>{{ $user->is_active == 1 ? 'Active' : 'Inactive' }}</td>

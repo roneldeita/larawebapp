@@ -4,7 +4,7 @@
 
 	<h1 class="page-header">Create Users</h1>
 
-		<!--{!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=>true]) !!}-->
+	<!--{!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=>true]) !!}-->
 	{!! Form::open(['method'=>'POST', 'route'=>['users.store'], 'files'=>true]) !!}
 
 		<div class="form-group">
