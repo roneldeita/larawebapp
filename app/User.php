@@ -27,8 +27,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /* 
+     * Get the role that belongs to user
+    */
     public function role(){
 
         return $this->belongsTo('App\Role');
     }
+
+     /* 
+     * Get the photo that belongs to user
+    */
+    public function photo(){
+
+        return $this->belongsTo('App\Photo');
+
+    }
+
 }
