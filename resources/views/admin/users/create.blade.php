@@ -44,9 +44,7 @@
 		</div>
 
 		<div class="form-group">
-
 			{!! Form::submit('Save User', ['class'=>'btn btn-primary']) !!}
-			
 		</div>
 
 	{!! Form::close() !!}

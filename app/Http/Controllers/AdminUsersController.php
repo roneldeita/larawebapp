@@ -8,8 +8,9 @@ use App\Http\Requests;
 use App\User;
 use App\Role;
 use App\Photo;
-use App\Http\Requests\UsersRequest;
+use App\Http\Requests\UsersCreateRequest;
 use App\Http\Requests\UsersEditRequest;
+use Illuminate\Support\Facades\Session;
 
 
 class AdminUsersController extends Controller
@@ -46,7 +47,7 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersRequest $request)
+    public function store(UsersCreateRequest $request)
     {
 
         //get all request and assigned it to a $input variable
@@ -59,7 +60,7 @@ class AdminUsersController extends Controller
             $name = time().'-'.$file->getClientOriginalName();
 
             //move photo to this location
-            $file->move('images/users_photo', $name);
+            $file->move('images', $name);
 
             //save photo info to Photo table
             $photo = Photo::create(['file'=> $name]);
@@ -147,7 +148,7 @@ class AdminUsersController extends Controller
 
             $name = time().'-'.$file->getClientOriginalName();
 
-            $file->move('images/users_photo', $name);
+            $file->move('images', $name);
 
             $photo = Photo::create(['file' => $name]);
 
@@ -157,6 +158,8 @@ class AdminUsersController extends Controller
 
 
         $user->update($input);
+
+        Session::flash('updated_user','The user has been updated');
 
         return redirect('/admin/users');
 
@@ -171,6 +174,15 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = User::findOrFail($id);
+
+        unlink(public_path().$user->photo->file);
+
+        $user->delete();
+        
+        Session::flash('deleted_user','The user has been deleted');
+
+        return redirect('/admin/users');
     }
 }

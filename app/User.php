@@ -33,9 +33,10 @@ class User extends Authenticatable
     public function role(){
 
         return $this->belongsTo('App\Role');
+        
     }
 
-     /* 
+    /* 
      * Get the photo that belongs to user
     */
     public function photo(){
@@ -43,5 +44,31 @@ class User extends Authenticatable
         return $this->belongsTo('App\Photo');
 
     }
+
+    /* 
+     * Method that will be used by the middleware Admin
+    */
+    public function isAdmin(){
+
+        if($this->role->name == "administrator" && $this->is_active ==1 ){
+
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+    /* 
+     * Get the posts that belong to user
+    */
+    public function posts(){
+
+        return $this->hasMany('App\Post');
+
+    }
+
 
 }
