@@ -38,7 +38,7 @@
 		      		<th><img height="50" src="{{ $user->photo ? $user->photo['file'] : 'http://placehold.it/100x100' }}"></th>
 		      		<td><a href="{{ route('users.edit', $user->id)}}">{{ $user->name }}</a></td>
 		      		<td>{{ $user->email }}</td>
-		      		<td>{{ $user->role->name }}</td>
+		      		<td>{{ $user->role ? $user->role->name : "No role assigned" }}</td>
 		      		<td>{{ $user->is_active == 1 ? 'Active' : 'Inactive' }}</td>
 		      		<td>{{ $user->created_at->diffForHumans() }}</td>
 		      		<td>{{ $user->updated_at->diffForHumans() }}</td>

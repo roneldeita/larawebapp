@@ -19,7 +19,7 @@
 
 		<div class="form-group">
 			{!! Form::label('role','Role') !!}
-			{!! Form::Select('role_id', [''=>'Choose an option'] + $roles, null,['class'=>'form-control'] ) !!}
+			{!! Form::Select('role_id', [''=>'Choose a role'] + $roles, null,['class'=>'form-control'] ) !!}
 		</div>
 
 		<div class="form-group">
