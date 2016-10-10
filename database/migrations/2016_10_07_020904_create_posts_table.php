@@ -17,10 +17,12 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index()->unsigned();
             $table->integer('category_id')->index()->unsigned();
-            $table->integer('photo_id')->index()->unsigned();
+            $table->integer('photo_id')->index()->unsigned()->nullable();
             $table->string('title');
             $table->text('body');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

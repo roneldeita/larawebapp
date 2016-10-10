@@ -22,7 +22,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    @yield('styles')
 </head>
 
 <body id="admin-page">
@@ -118,10 +118,10 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html">All Categories</a>
+                                <a href="{{route('categories.index')}}">All Categories</a>
                             </li>
                             <li>
-                                <a href="buttons.html">Create Category</a>
+                                <a href="{{route('categories.create')}}">Create Category</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -131,10 +131,10 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html">All Media</a>
+                                <a href="{{route('media.index')}}">All Media</a>
                             </li>
                             <li>
-                                <a href="buttons.html">Create Media</a>
+                                <a href="{{route('media.create')}}">Create Media</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -251,6 +251,9 @@
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
 
+@yield('scripts')
+
+@yield('footer')
 </body>
 
 </html>
