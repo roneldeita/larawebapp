@@ -10,7 +10,7 @@
 
 	<h1 class="page-header">Upload Media</h1>
 
-	{!! Form::open(['route'=>['media.create'], 'files' =>true, 'class'=>'dropzone']) !!}
+	{!! Form::open(['route'=>['media.store'], 'files' =>true, 'class'=>'dropzone']) !!}
 	
 	{!! Form::close() !!}
 
